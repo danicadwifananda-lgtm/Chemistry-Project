@@ -47,13 +47,20 @@ body {
   font-weight: bold;
   border-radius: 5px;
   transition: transform 0.2s, box-shadow 0.3s, background-color 0.3s;
+  text-decoration: none; /* Untuk elemen <a> sebagai tombol */
+  display: inline-block;
 }
 
-/* Tombol START / Outline */
+/* Tombol START / GET START (Outline) */
 .btn-start {
-  background-color: transparent;
-  color: var(--color-text-light);
-  border: 2px solid var(--color-text-light);
+  padding: 20px 20px;
+  margin-left: 10px;
+  border: 2px solid;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: background-color 0.3s;
 }
 
 .btn-start:hover {
@@ -61,19 +68,15 @@ body {
   transform: translateY(-2px);
 }
 
-/* Tombol CREATE / Solid Blue */
-.btn-create {
-  background-color: var(--color-accent-blue-neon);
-  color: var(--color-dark-bg);
+/* Tombol Ghost (Lihat Semua Proyek) */
+.btn-ghost {
+  background-color: transparent;
+  color: var(--color-accent-blue-neon);
   border: 2px solid var(--color-accent-blue-neon);
 }
 
-.btn-create:hover {
-  background-color: var(--color-accent-blue-mid);
-  border-color: var(--color-accent-blue-mid);
-  color: var(--color-text-light);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 191, 255, 0.4);
+.btn-ghost:hover {
+  background-color: rgba(0, 191, 255, 0.1);
 }
 
 .subtitle {
@@ -179,7 +182,8 @@ body {
   overflow: hidden;
   border-radius: 5px;
   position: relative;
-  box-shadow: 0 0 50px rgba(0, 191, 255, 0.3); /* Cahaya biru di sekitar gambar */
+  /* Cahaya biru di sekitar gambar */
+  box-shadow: 0 0 50px rgba(0, 191, 255, 0.3);
 }
 
 .hero-image img {
@@ -207,6 +211,9 @@ body {
 }
 
 .hero-buttons {
+  /* Perbaikan: Menghapus display: flex jika hanya ada 1 tombol, 
+       tapi biarkan flex jika Anda ingin mempertahankan struktur untuk 
+       penambahan tombol di masa depan. Saya biarkan flex untuk fleksibilitas. */
   display: flex;
   gap: 15px;
 }
@@ -262,18 +269,6 @@ body {
 .card h3 {
   color: var(--color-accent-blue-neon);
   margin-bottom: 15px;
-}
-
-.btn-ghost {
-  background-color: transparent;
-  color: var(--color-accent-blue-neon);
-  border: 2px solid var(--color-accent-blue-neon);
-  text-decoration: none;
-  display: inline-block;
-}
-
-.btn-ghost:hover {
-  background-color: rgba(0, 191, 255, 0.1);
 }
 
 /* --- 7. About Section Styles --- */
@@ -370,10 +365,9 @@ body {
   font-size: 0.9em;
 }
 
-/* --- 10. Responsive Adjustments (Optional but Recommended) --- */
+/* --- 10. Responsive Adjustments --- */
 @media (max-width: 900px) {
   .hero,
-  .navbar,
   .split-content {
     flex-direction: column;
     text-align: center;
@@ -395,5 +389,24 @@ body {
 
   .card {
     max-width: 100%;
+  }
+
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .navbar nav {
+    order: 3;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .navbar nav ul {
+    justify-content: center;
+  }
+
+  .actions {
+    order: 2;
   }
 }
